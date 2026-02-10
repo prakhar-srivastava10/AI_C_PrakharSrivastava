@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #041526;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #ecebcd;
+    }
+    .choices {
+      margin: 30px 0;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #0078d4;
+      color: #041526;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #005a9e;
+    }
+    .game-area {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+      font-size: 22px;
+      color: #000000;
+    }
+    .side {
+      width: 40%;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: #b0c2d4;
+      min-height: 80px;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 26px;
+      font-weight: bold;
+      color: #ecebcd;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    #thinking {
+      font-style: italic;
+      color: #ecebcd;
+      margin-top: 10px;
+    }
+    #scoreboard {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #ecebcd;
+    }
+    #resetBtn {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>
+  <div class="choices">
+    <button onclick="play('Rock')">🪨 Rock</button>
+    <button onclick="play('Paper')">📄 Paper</button>
+    <button onclick="play('Scissors')">✂️ Scissors</button>
+  </div>
+
+  <div class="game-area">
+  <div class="side" id="userChoice">
+    You chose:<br>
+    <img id="userImg" src="" alt="" width="100">
+  </div>
+  <div class="side" id="computerChoice">
+    Computer chose:<br>
+    <img id="computerImg" src="" alt="" width="100">
+  </div>
+</div>
+
+
+  <div id="thinking"></div>
+  <div id="result"></div>
+  <div id="scoreboard">You: 0 | Computer: 0</div>
+
+  <div id="resetBtn">
+    <button onclick="resetGame()">🔄 Reset</button>
+  </div>
+
+<script>
+  let userScore = 0;
+  let computerScore = 0;
+  const choices = ['Rock', 'Paper', 'Scissors'];
+
+  function play(userChoice) {
+    const userImg = document.getElementById('userImg');
+    const compImg = document.getElementById('computerImg');
+    const resultDiv = document.getElementById('result');
+    const thinkingDiv = document.getElementById('thinking');
+    const scoreDiv = document.getElementById('scoreboard');
+
+    // Show user's image
+    userImg.src = `${userChoice}.png`;
+    userImg.alt = userChoice;
+
+    // Reset computer image and result
+    compImg.src = '';
+    compImg.alt = '';
+    resultDiv.style.opacity = 0;
+    thinkingDiv.innerText = 'Computer is thinking...';
+
+    // Shuffle computer images
+    let shuffleIndex = 0;
+    const shuffleInterval = setInterval(() => {
+      compImg.src = `${choices[shuffleIndex]}.png`;
+      compImg.alt = choices[shuffleIndex];
+      shuffleIndex = (shuffleIndex + 1) % choices.length;
+    }, 150);
+
+    // Final choice after delay
+    setTimeout(() => {
+      clearInterval(shuffleInterval);
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+      compImg.src = `${computerChoice}.png`;
+      compImg.alt = computerChoice;
+      thinkingDiv.innerText = '';
+
+      let result = '';
+      if (userChoice === computerChoice) {
+        result = "It's a tie!";
+      } else if (
+        (userChoice === 'Rock' && computerChoice === 'Scissors') ||
+        (userChoice === 'Paper' && computerChoice === 'Rock') ||
+        (userChoice === 'Scissors' && computerChoice === 'Paper')
+      ) {
+        userScore++;
+        result = `You win! ${userChoice} beats ${computerChoice}.`;
+      } else {
+        computerScore++;
+        result = `You lose! ${computerChoice} beats ${userChoice}.`;
+      }
+
+      resultDiv.innerText = result;
+      resultDiv.style.opacity = 1;
+      scoreDiv.innerText = `You: ${userScore} | Computer: ${computerScore}`;
+    }, 1500);
+  }
+
+  function resetGame() {
+    userScore = 0;
+    computerScore = 0;
+    document.getElementById('userImg').src = '';
+    document.getElementById('computerImg').src = '';
+    document.getElementById('result').innerText = '';
+    document.getElementById('result').style.opacity = 0;
+    document.getElementById('thinking').innerText = '';
+    document.getElementById('scoreboard').innerText = 'You: 0 | Computer: 0';
+  }
+</script>
+
+</body>
+</html>

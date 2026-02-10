@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors — Project Overview</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #041526, #0a2a4a);
+      color: #ecebcd;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background-color: #0f2f4f;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #7fb7ff;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .tech {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tech span {
+      background-color: #0078d4;
+      color: #041526;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .highlight {
+      color: #ffd479;
+      font-weight: bold;
+    }
+
+    /* Play Button */
+    .play-container {
+      text-align: center;
+      margin: 60px 0 40px;
+    }
+
+    .play-button {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 14px 32px;
+      border-radius: 30px;
+      background-color: #0078d4;
+      color: #041526;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .play-button:hover {
+      background-color: #4aa3ff;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Rock Paper Scissors</h1>
+    <p>
+      A clean, interactive browser game built entirely with frontend technologies —
+      no servers, no frameworks, just the basics done well.
+    </p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>🎮 About the Game</h2>
+      <p>
+        This project is a modern take on the classic
+        <span class="highlight">Rock Paper Scissors</span> game.
+        Players make a choice while the computer randomly selects its move,
+        with results shown instantly.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>✨ Features</h2>
+      <ul>
+        <li>Interactive buttons with visual feedback</li>
+        <li>Animated computer “thinking” effect</li>
+        <li>Live score tracking</li>
+        <li>Clean, responsive layout</li>
+        <li>Reset button for fresh gameplay</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🧠 How It Works</h2>
+      <p>
+        The game logic runs entirely in the browser.
+        Each round compares the player's choice against a randomly selected computer move
+        using the classic rules of Rock Paper Scissors.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🛠️ Tech Stack</h2>
+      <div class="tech">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+      </div>
+      <p style="margin-top: 15px;">
+        This page itself is built using only <strong>HTML and CSS</strong>,
+        serving as a stylish README-style website.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🚀 Why This Project?</h2>
+      <p>
+        This project showcases strong frontend fundamentals —
+        layout, styling, interaction, and user experience —
+        without relying on external libraries or frameworks.
+      </p>
+    </div>
+
+    <!-- Play Button -->
+    <div class="play-container">
+      <a href="index.html" class="play-button">
+        ▶ Play the Game
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    Rock Paper Scissors • Frontend-only project
+  </footer>
+
+</body>
+</html>
